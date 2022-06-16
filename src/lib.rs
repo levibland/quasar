@@ -1,3 +1,5 @@
+pub mod garbage_collector;
+
 #[cfg(test)]
 mod tests {
     #[test]
