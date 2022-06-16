@@ -21,7 +21,7 @@ pub enum Object {
 #[derive(Debug, Clone)]
 pub struct Function {
     name: String,
-    // todo: add chunk
+    chunk: Chunk,
     arity: u8,
     upvalue_count: usize,
 }
@@ -50,5 +50,5 @@ pub struct List {
 #[derive(Debug, Clone)]
 pub struct Closure {
     function: Function,
-    up
+    upvalues: Vec<UpValue>,
 }
