@@ -1,0 +1,16 @@
+[package]
+name = "quasar"
+version = "0.1.0"
+authors = ["levibland <levi.bland@icloud.com>"]
+edition = "2021"
+homepage = "https://github.com/levibland/quasar"
+repository = "https://github.com/levibland/quasar"
+readme = "README.md"
+license = "MIT"
+description = "Stack based VM"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+flame = "0.2.2"
+flamer = "0.4"
