@@ -1,4 +1,4 @@
-pub mod garbage_collector;
+pub mod vm;
 
 #[cfg(test)]
 mod tests {
