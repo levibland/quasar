@@ -13,5 +13,6 @@ description = "Stack based VM 🌌"
 
 [dependencies]
 flame = "0.2.2"
-flamer = "0.4"
+flamer = "0.3"
 im-rc = "14.3.0"
+fnv = "1.0.3"

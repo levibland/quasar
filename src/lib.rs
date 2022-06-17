@@ -1,6 +1,7 @@
 extern crate flame;
 #[macro_use] extern crate flamer;
 extern crate im_rc;
+extern crate fnv;
 
 pub mod vm;
 
