@@ -7,7 +7,7 @@ homepage = "https://github.com/levibland/quasar"
 repository = "https://github.com/levibland/quasar"
 readme = "README.md"
 license = "MIT"
-description = "Stack based VM"
+description = "Stack based VM 🌌"
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
