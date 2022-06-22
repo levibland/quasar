@@ -204,17 +204,17 @@ impl<'h, T> WithHeap<'h, T> {
     }
 }
 
-impl<'h, 'a> Display for WithHeap<'h, &'a Object> {
+impl<'h> Display for WithHeap<'h, Value> {
     fn fmt(&self, f: &mut ::std::fmt::Formatter) -> ::std::fmt::Result {
-        use self::Object::*;
-
-        match self.item {
-            String(ref s) => write!(f, "{}", s),
-            NativeFunction(ref na) => write!(f, "<native fn {}>", na.name),
-            Function(ref fun) => write!(f, "<fn {}>", fun.name),
-            Closure(ref cl) => write!(f, "<fn {}>", cl.function.name),
-            List(ref ls) => write!(f, "<list [{}]>", ls.content.len()),
-            Dict(ref ls) => write!(f, "<dict [{}]>", ls.content.len()),
+        match self.item.decode() {
+            Variant::Nil => write!(f, "nil"),
+            Variant::False => write!(f, "false"),
+            Variant::True => write!(f, "true"),
+            Variant::Float(n) => write!(f, "{}", n),
+            Variant::Obj(o) => {
+                let o = self.heap.get(o).ok_or(::std::fmt::Error)?;
+                write!(f, "{}", self.with(o))
+            },
         }
     }
 }

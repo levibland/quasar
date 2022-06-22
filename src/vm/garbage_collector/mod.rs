@@ -129,7 +129,7 @@ impl<T: Trace<T>> Heap<T> {
     pub unsafe fn get_mut_unchecked(&mut self, handle: impl AsRef<Handle<T>>) -> &mut T {
         let handle = handle.as_ref();
         debug_assert!(self.contains(handle));
-        unsafe { &mut *handle.ptr }
+        &mut *handle.ptr
     }
 
     pub fn clean_excluding(&mut self, excluding: impl IntoIterator<Item=Handle<T>>) {

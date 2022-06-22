@@ -5,6 +5,9 @@ pub mod chunk;
 pub mod vm;
 pub mod disassembler;
 
+use super::compiler::*;
+use super::ir::*;
+
 pub use self::value::*;
 pub use self::garbage_collector::*;
 #[macro_use]

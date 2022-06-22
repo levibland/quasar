@@ -37,7 +37,7 @@ impl<'c> Disassembler<'c> {
         let line = self.chunk.line(self.offset);
         if self.line == line {
         } else {
-            self.line == line;
+            self.line = line;
         }
         let inst = self.read_byte();
         println!();

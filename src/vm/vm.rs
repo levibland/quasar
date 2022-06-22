@@ -7,6 +7,7 @@ use flame as f;
 use flamer::flame;
 
 use super::*;
+use super::compiler::CompileState;
 
 use std::mem;
 
@@ -494,7 +495,7 @@ impl VM {
 
         let dict_object = dict
             .as_object()
-            .map(|o| self.heap.get_mut_unchecked(o));
+            .map(|o| unsafe { self.heap.get_mut_unchecked(o) });
 
         if let Some(Object::Dict(ref mut dict)) = dict_object {
             dict.insert(key, value)
@@ -549,7 +550,7 @@ impl VM {
 
         let list_object = list
             .as_object()
-            .map(|o| self.heap.get_mut_unchecked(o));
+            .map(|o| unsafe { self.heap.get_mut_unchecked(o) });
 
         if let Some(Object::List(ref mut list)) = list_object {
             list.set(idx as usize, value)
@@ -571,7 +572,7 @@ impl VM {
             Nil => HashVariant::Nil,
         };
 
-        let list_object = self.heap.get_mut_unchecked(list.as_object().unwrap());
+        let list_object = unsafe{ self.heap.get_mut_unchecked(list.as_object().unwrap()) };
 
         if let Object::List(list) = list_object {
             let idx = if let Variant::Float(ref index) = index.decode() {
@@ -810,6 +811,6 @@ impl VM {
 
     #[flame]
     fn deref_mut(&mut self, o: Handle<Object>) -> &mut Object {
-        self.heap.get_mut_unchecked(o)
+        unsafe { self.heap.get_mut_unchecked(o) }
     }
 }
