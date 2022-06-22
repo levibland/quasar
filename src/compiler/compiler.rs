@@ -171,7 +171,7 @@ impl<'g> Compiler<'g> {
     }
 
     pub fn compile(&mut self, exprs: &[ExprNode]) -> Function {
-        self.start_function(false, "<zub>", 0, 0);
+        self.start_function(false, "<quasar>", 0, 0);
 
         for expr in exprs.iter() {
             self.compile_expr(expr)
@@ -182,7 +182,7 @@ impl<'g> Compiler<'g> {
     }
 
     pub fn compile_from(&mut self, exprs: &[ExprNode], locals: Vec<Local>) -> Function {
-        self.start_function(false, "<zub>", 0, 0);
+        self.start_function(false, "<quasar>", 0, 0);
         self.states.last_mut().unwrap().locals = locals;
 
         for expr in exprs.iter() {
